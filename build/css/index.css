@@ -7,6 +7,10 @@
  * 
  */
 
+body {
+    padding-top: 51px;
+}
+
 
 /* header部分 */
 
@@ -15,6 +19,11 @@
     line-height: 50px;
     border-bottom: 1px solid #ddd;
     padding: 0 15px;
+    position: fixed;
+    top: 0;
+    background: #fff;
+    width: 100%;
+    z-index: 99;
 }
 
 .header .btn-success {
@@ -52,6 +61,7 @@
     position: fixed;
     left: 0;
     width: 150px;
+    height: 500px;
     border-right: 1px solid #ddd;
     min-height: 150px;
     padding: 10px 0;
@@ -62,26 +72,30 @@
 }
 
 .menu ul li {
-    height: 35px;
-    line-height: 35px;
+    height: 30px;
+    line-height: 30px;
     font-size: 14px;
+    border: 1px solid #ddd;
+    margin: 3px 10px;
+    border-radius: 3px;
+    color: #666;
 }
 
 .menu ul li a {
     display: inline-block;
     width: 100%;
-    height: 35px;
+    height: 30px;
 }
 
 .menu ul li a:hover {
-    background: #eeeeee;
+    background: #f9f9f9;
 }
 
 
 /* 问卷部分 */
 
 .survey {
-    position: fixed;
+    position: absolute;
     left: 151px;
     right: 0;
     overflow: auto;
@@ -96,8 +110,12 @@
     white-space: normal;
     margin: 0 auto;
     border: 1px solid #e0e0e0;
-    padding: 30px 0;
+    padding: 50px 0;
+    background: #fff;
 }
+
+
+/* 标题和描述 */
 
 .survey_title,
 .survey_prefix {
@@ -112,12 +130,6 @@
     border-bottom: 1px solid #e0e0e0;
 }
 
-.survey_title.focus {
-    background-color: #fafafa;
-    border-top: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
-}
-
 .survey_title .title_content {
     padding: 10px;
     font-size: 24px;
@@ -125,12 +137,6 @@
     font-weight: normal;
     word-break: break-word;
     border: 1px solid #ffffff;
-}
-
-.survey_title:hover .title_content,
-.survey_prefix:hover .prefix_content {
-    background: #fff;
-    border: 1px solid #e0e0e0;
 }
 
 .survey_prefix .prefix_content {
@@ -141,4 +147,29 @@
     word-break: break-word;
     border: 1px solid #ffffff;
     text-align: left;
+}
+
+.survey_title.focus,
+.survey_prefix.focus {
+    background-color: #fafafa;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.survey_title:hover .title_content,
+.survey_title.focus .title_content,
+.survey_prefix:hover .prefix_content,
+.survey_prefix.focus .prefix_content {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+
+/* 问卷题目部分 */
+
+.question {
+    height: 150px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    cursor: move;
 }

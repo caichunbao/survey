@@ -27,4 +27,11 @@ $(function() {
     }).blur(function() {
         $(".survey_title").removeClass("focus")
     })
+
+    $(".save_survey_btn").click(function() {
+        console.log(survey.getTitle("survey_title"));
+        // var titleText = survey.getTitle("survey_title")
+        // console.log(titleText)
+
+    })
 })

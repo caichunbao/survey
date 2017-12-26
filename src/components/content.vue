@@ -17,7 +17,7 @@
         <div class="question">
           <div class="question_item" v-for="(item,index) in survey.question" :key="index">
             <p>{{item.title}}</p>
-            <radio-view></radio-view>
+            <radio-view :mydata="item.title"></radio-view>
           </div>
         </div>
       </div>

@@ -18,9 +18,11 @@
     </div>
     <div class="menu">
         <ul>
-            <li><a href="#radio">单选框</a></li>
-            <li><a href="#checkbox">多选框</a></li>
-            <li><a href="#textarea">文本框</a></li>
+            <li><a href="#radio">单选题</a></li>
+            <li><a href="#select">下拉题</a></li>
+            <li><a href="#checkbox">多选题</a></li>
+            <li><a href="#textarea">文本题</a></li>
+            <li><a href="#star">量表题</a></li>
         </ul>
     </div>
     <div class="survey">
@@ -31,19 +33,33 @@
             <div class="survey_prefix">
                 <div class="inner">
                     <div class="prefix_content" contenteditable="true">
-                        <p>为了给您提供更好的服务，希望您能抽出几分钟时间，将您的感受和建议告诉我们，我们非常重视每位用户的宝贵意见，期待您的参与！现在我们就马上开始吧！</p>
+                        为了给您提供更好的服务，希望您能抽出几分钟时间，将您的感受和建议告诉我们，我们非常重视每位用户的宝贵意见，期待您的参与！现在我们就马上开始吧！
                     </div>
                 </div>
             </div>
 
             <div class="survey_container">
-                
+
+                <div class="question">1</div>
+                <div class="question">2</div>
+                <div class="question">3</div>
+
             </div>
         </div>
     </div>
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <script type="text/javascript" src="./build/js/question.js"></script>
     <script type="text/javascript" src="./build/js/index.js"></script>
+    <script type="text/javascript" src="./build/js/Sortable.js"></script>
+    <script>
+        var sortable = new Sortable(document.getElementsByClassName("survey_container")[0], {
+            animation: 150,
+            disabled: false,
+            ghostClass: "sortable-ghost", // Class name for the drop placeholder
+            chosenClass: "sortable-chosen", // Class name for the chosen item
+            dragClass: "sortable-drag", // Class name for the dragging item
+        })
+    </script>
 </body>
 
 </html>

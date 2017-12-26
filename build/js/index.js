@@ -26,7 +26,14 @@ $(function() {
         $(".survey_title").addClass("focus")
     }).blur(function() {
         $(".survey_title").removeClass("focus")
+    });
+    // prefix部分
+    $(".prefix_content").focus(function() {
+        $(".survey_prefix").addClass("focus")
+    }).blur(function() {
+        $(".survey_prefix").removeClass("focus")
     })
+
 
     $(".save_survey_btn").click(function() {
         console.log(survey.getTitle("survey_title"));

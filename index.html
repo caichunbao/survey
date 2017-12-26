@@ -1,74 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./build/css/base.css">
-    <link rel="stylesheet" href="./build/css/index.css">
-    <title>问卷</title>
-</head>
-
-<body>
-    <div class="header">
-        <span class="btn-success create_survey_btn">创建问卷</span>
-        <span class="btn-success preview_survey_btn">本地预览</span>
-        <span class="btn-success save_survey_btn">保存问卷</span>
-    </div>
-    <div class="menu">
-        <ul>
-            <li><a href="#radio">单选题</a></li>
-            <li><a href="#select">下拉题</a></li>
-            <li><a href="#checkbox">多选题</a></li>
-            <li><a href="#textarea">文本题</a></li>
-            <li><a href="#star">量表题</a></li>
-        </ul>
-    </div>
-    <div class="survey">
-        <div class="survey_main">
-            <div class="survey_title">
-                <div class="title_content" contenteditable="true">问卷标题</div>
-            </div>
-            <div class="survey_prefix">
-                <div class="prefix_content" contenteditable="true">
-                    为了给您提供更好的服务，希望您能抽出几分钟时间，将您的感受和建议告诉我们，我们非常重视每位用户的宝贵意见，期待您的参与！现在我们就马上开始吧！
-                </div>
-            </div>
-
-            <div class="survey_container">
-                <div class="question">
-
-                </div>
-                <div class="question">
-
-                </div>
-                <div class="question">
-
-                </div>
-                <div class="question">
-
-                </div>
-                <div class="question">
-
-                </div>
-                <div class="question">
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-    <script type="text/javascript" src="./build/js/question.js"></script>
-    <script type="text/javascript" src="./build/js/preview.js"></script>
-    <script type="text/javascript" src="./build/js/index.js"></script>
-    <script type="text/javascript" src="./build/js/Sortable.js"></script>
-    <script>
-        var survey_elem = new surveyElem("survey_container", {
-            title: "biaoti",
-            prefix: "jianjie"
-        })
-    </script>
-</body>
-
+  <head>
+    <meta charset="utf-8">
+    <title>survey</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/dist/build.js"></script>
+  </body>
 </html>

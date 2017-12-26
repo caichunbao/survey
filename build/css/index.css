@@ -173,4 +173,13 @@ body {
     border: 1px solid #ddd;
     margin: 10px;
     cursor: move;
+    background: #eeeeee;
+}
+
+.sortable-chosen {
+    background: #ffffff;
+}
+
+.sortable-ghost {
+    background: #ffffff;
 }

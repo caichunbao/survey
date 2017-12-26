@@ -37,8 +37,10 @@ $(function() {
 
     $(".save_survey_btn").click(function() {
         console.log(survey.getTitle("survey_title"));
-        // var titleText = survey.getTitle("survey_title")
-        // console.log(titleText)
-
+        console.log(survey.getPrefix("survey_prefix"));
+        survey_json.title = survey.getTitle("survey_title");
+        survey_json.prefix = survey.getPrefix("survey_prefix");
+        survey_json.question = [];
+        console.log(survey_json)
     })
 })

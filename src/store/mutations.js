@@ -3,9 +3,9 @@ const state = {
     edit_status: false,
     animate_status: false,
     survey: {
-        id: "000000",
-        title: "标题state",
-        prefix: "简介prefix",
+        id: "",
+        title: "问卷标题",
+        prefix: "为了给您提供更好的服务，希望您能抽出几分钟时间，将您的感受和建议告诉我们，我们非常重视每位用户的宝贵意见，期待您的参与！现在我们就马上开始吧！",
         question: []
     }
 }

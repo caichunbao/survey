@@ -29,6 +29,10 @@
           {
             name:"文本框",
             type:"textarea"
+          },
+          {
+            name:"量表题",
+            type:"star"
           }
         ]
 			}
@@ -45,15 +49,31 @@
 		methods:{
       add_question(type){
         if(!this.edit_status){
-          this.survey.question.push({
-            type:type
-          });
+          switch (type) {
+            case "radio":
+              this.survey.question.push({
+                type:type,
+                title:"",
+                remarks:"",
+                options:[{name:""},{name:""}]
+              });
+              break;
+            case "checkbox":
+              this.survey.question.push({
+                type:type,
+                title:"",
+                remarks:"",
+                options:[{name:""},{name:""}]
+              });
+              break;
+            default:
+              alert("目前只支持单选，多选~")
+              break;
+          }
           this.$store.dispatch("changeEditStatus")
         }else{
           alert("先编辑好当前的题目")
-          // this.$store.dispatch("changeAnimateStatus")
         }
-        
       }
 		}
 	}

@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex"
 	export default {
 		data(){
 			return {
@@ -32,13 +33,27 @@
         ]
 			}
     },
+    computed:{
+      ...mapGetters([
+        'survey',
+        'edit_status'
+      ])
+    },
     mounted:function(){
       console.log(this.$store)
     },
 		methods:{
       add_question(type){
-        console.log(type)
-        this.$store.dispatch(type)
+        if(!this.edit_status){
+          this.survey.question.push({
+            type:type
+          });
+          this.$store.dispatch("changeEditStatus")
+        }else{
+          alert("先编辑好当前的题目")
+          // this.$store.dispatch("changeAnimateStatus")
+        }
+        
       }
 		}
 	}

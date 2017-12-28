@@ -16,7 +16,7 @@
 
         <div class="question">
           <div class="question_item" v-for="(item,index) in survey.question" :key="index">
-            <radio-view :mydata="item"></radio-view>
+            <radio-view :mydata="item" :index="index"></radio-view>
           </div>
         </div>
       </div>
@@ -36,7 +36,8 @@
     },
     computed:{
       ...mapGetters([
-        "survey"
+        "survey",
+        ""
       ])
     },
     components:{
@@ -77,9 +78,8 @@
   .survey_prefix{
     margin: 10px 0;
   }
-  textarea{
-    font-size: 12px;
-    color:red;
+  .question_item{
+    margin: 10px 0;
   }
 </style>
 

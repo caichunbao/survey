@@ -4,5 +4,11 @@ export default {
     },
     radio: ({ commit }) => {
         commit('radio')
+    },
+    changeEditStatus:({commit}) =>{
+        commit('changeEditStatus')
+    },
+    changeAnimateStatus:({commit}) => {
+        commit('changeAnimateStatus')
     }
 }

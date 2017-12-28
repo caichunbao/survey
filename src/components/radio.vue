@@ -1,6 +1,6 @@
 <template>
   <div class="radio">
-    <div class="edit" v-if="edit_status">
+    <div class="edit animated" v-if="edit_status_this">
       <el-form label-width="80px">
         <el-form-item label="题目">
           <el-input v-model="title"></el-input>
@@ -28,8 +28,9 @@
         <el-button type="default" @click="cancel_edit()">取消</el-button>
       </div>
     </div>
-    <div class="result" v-if="!edit_status">
-      <p><span style="color:red;position: relative;top: 3px;">*&nbsp;</span>{{title}}</p>
+    <div class="result" v-else>
+      <p class="title">1.{{title}}<span>&nbsp;*</span></p>
+      <P class="remarks">{{remarks}}</P>
       <div class="inputs">
         <template v-for="(item,index) in options" >
           <div class="inputs-item" :key="index"><el-radio v-model="radio" label="index">{{item.name}}</el-radio></div>
@@ -38,7 +39,7 @@
       <div class="control_mask">
         <el-button-group>
           <el-button type="default" icon="el-icon-edit" @click="edit()"></el-button>
-          <el-button type="default" icon="el-icon-delete"></el-button>
+          <el-button type="default" icon="el-icon-delete" @click="del_option(index)"></el-button>
         </el-button-group>
       </div>
     </div>
@@ -46,13 +47,14 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex"
   export default {
     data(){
       return {
         radio:"",
         title:"题目",
-        remarks:"备注",
-        edit_status:true,
+        remarks:"",
+        edit_status_this:true,
         control_mask_status:false,
         options:[
           {
@@ -67,13 +69,19 @@
     mounted:function(){
 
     },
+    computed:{
+      ...mapGetters([
+        'survey',
+        'edit_status'
+      ])
+    },
     props:[
-      "mydata"
+      "mydata",
+      "index"
     ],
     methods:{
       save(){
-        this.edit_status = !this.edit_status;
-        console.log("打印数据")
+        this.edit()
       },
       add_option(){
         this.options.push({
@@ -81,20 +89,46 @@
         })
       },
       del_option(index){
-        this.options.splice(index,1)
-        console.log(1)
+        console.log(index)
+        this.survey.question.splice(index,1)
       },
       edit(){
-        this.edit_status = true;
+        this.edit_status_this = !this.edit_status_this;
+        this.$store.dispatch("changeEditStatus");
       },
       cancel_edit(){
-        this.edit_status = false;
+        this.edit()
       }
     }
   }
 
 </script>
 <style>
+  @keyframes shake {
+    0%, 100% {
+      transform: translateZ(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+      transform: translate3d(-10px,0,0);
+      border: 1px solid red;
+    }
+    20%, 40%, 60%, 80% {
+      transform: translate3d(10px,0,0);
+      border: 1px solid red;
+    }
+  }
+  .animated{
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  .shake {
+    animation-name: shake;
+  }
+  .radio{
+    font-size: 14px;
+    color: #333
+  }
+  /* 编辑样式 */
   .radio .edit{
     border: 1px solid #ddd;
     padding: 40px 20px;
@@ -148,9 +182,15 @@
     text-align: left;
     position: relative;
     padding:20px;
+    font-size: 14px;
+  }
+  .result .title span{
+    color:red;
+    position:relative;
+    top: 3px;
   }
   .result .inputs-item{
-    margin:10px 0;
+    margin:15px 0;
   }
   .result .control_mask{
     display:none;

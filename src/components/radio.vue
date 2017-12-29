@@ -16,7 +16,7 @@
             <div class="sort_options_item">
               <i class="el-icon-sort"></i>
             </div>
-            <el-input v-model="item.name" placeholder="选项（必填）" class="animated" :class="{shake:optionsAnimate[index]}"></el-input>
+            <el-input v-model="item.name" placeholder="选项（必填）"></el-input>
             <div class="del_options_item" @click="del_option(index)">
               <i class="el-icon-delete"></i>
             </div>
@@ -63,16 +63,12 @@
       ...mapGetters([
         'survey',
         'edit_status'
-      ]),
-      optionsAnimate(){
-        // var arr = [];
-        // for(var i = 0 ; i < this.itemData.options.length ;i++){
-        //   arr.push(false)
-        // }
-        return [false,false,false,false,false]
-      }
+      ])
     },
     mounted:function(){
+      if(this.itemData.title != ''){
+        this.edit_status_this = false;
+      }
     },
     props:[
       "itemData",
@@ -80,22 +76,7 @@
     ],
     methods:{
       save(){
-        // var _this = this,optionsAccess = true;
         var _this = this;
-        // _this.itemData.options.forEach(function(item,index){
-          // if(item.name == ''){
-            // _this.optionsAnimate[0] = true;
-            // optionsAccess = false;
-          // }
-        // });
-        // var t1 = setTimeout(function() {
-        //   _this.optionsAnimate.forEach(function(item,index){
-        //     _this.optionsAnimate[index] = false;
-        //   })
-        // }, 500);
-
-        // console.log(_this.itemData.options)
-        // console.log(_this.optionsAnimate)
         if(_this.itemData.title == ''){
           _this.titleAnimate = true;
           setTimeout(function() {
@@ -134,7 +115,7 @@
     }
   }
 </script>
-<style>
+<style scoped>
   @keyframes shake {
     0%, 100% {
       transform: translateZ(0);

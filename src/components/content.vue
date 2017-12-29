@@ -100,7 +100,7 @@
   }
 </script>
 
-<style scope>
+<style scoped>
   @keyframes shake {
     0%, 100% {
       transform: translateZ(0);

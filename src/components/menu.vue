@@ -79,7 +79,7 @@
 	}
 </script>
 
-<style scope>
+<style scoped>
   .edit_slider{
     width: 200px;
     position: fixed;

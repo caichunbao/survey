@@ -88,8 +88,16 @@
         }
       },
       cancel(){
-        this.edit_status_this = !this.edit_status_this;
-        this.$store.dispatch("changeEditStatus");
+        var _this = this;
+        if(_this.itemData.title == ''){
+          _this.titleAnimate = true;
+          setTimeout(function() {
+            _this.titleAnimate = false;
+          }, 500);
+        }else{
+          _this.edit_status_this = !_this.edit_status_this;
+          _this.$store.dispatch("changeEditStatus");
+        }
       },
       add_option(){
         this.itemData.options.push({
@@ -97,7 +105,11 @@
         })
       },
       del_option(index){
-        this.itemData.options.splice(index,1)
+        if(this.itemData.options.length <=2 ){
+          alert("至少有两个选项")
+        }else{
+          this.itemData.options.splice(index,1)
+        }
       },
 
       del_item(index){
